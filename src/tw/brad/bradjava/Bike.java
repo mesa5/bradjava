@@ -3,9 +3,11 @@ package tw.brad.bradjava;
 public class Bike {
 	// Field
 	private double speed;
+	static int count;
 	
 	// Constructor
 	Bike(){
+		count++;
 		speed = 1;
 		System.out.println("Bike():" + speed);
 	}
