@@ -1,12 +1,12 @@
 package tw.brad.bradjava;
 
-public class Bike {
+class Bike2 {
 	// Field
 	private double speed;
 	static int count;
 	
 	// Constructor
-	protected Bike(){
+	public Bike2(){
 		count++;
 		speed = 1;
 		System.out.println("Bike():" + speed);
@@ -17,7 +17,7 @@ public class Bike {
 	}
 	
 	// Method
-	protected void upSpeed(){
+	void upSpeed(){
 		speed = speed<1?1:speed*1.2;
 	}
 	void downSpeed(){
