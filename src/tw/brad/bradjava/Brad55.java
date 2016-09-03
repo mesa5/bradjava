@@ -26,7 +26,9 @@ public class Brad55 {
 }
 
 class Student implements Serializable {
-	int ch, eng, math;
+	int ch; 
+	transient int eng; 
+	int math;
 	String name;
 	PM pm;
 	Student(PM pm, String name, int ch, int eng, int math){
