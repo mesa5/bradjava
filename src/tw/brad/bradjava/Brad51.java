@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -43,6 +45,13 @@ public class Brad51 extends JFrame {
 			}
 		});
 		
+		save.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				doSave();
+			}
+		});
+		
 		setSize(640, 480);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -65,6 +74,20 @@ public class Brad51 extends JFrame {
 			}
 			reader.close();
 		} catch (Exception e) {
+		}
+	}
+	
+	private void doSave(){
+		if (openFile != null){
+			try {
+				FileWriter writer = 
+						new FileWriter(openFile);
+				writer.write(edit.getText());
+				writer.flush();
+				writer.close();
+			} catch (IOException e) {
+			}
+			
 		}
 	}
 	

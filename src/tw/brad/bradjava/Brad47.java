@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// 測試一下拉, 粉高興
 public class Brad47 {
 	public static void main(String[] args) {
 		File f1 = new File("dir1/brad01.txt");
