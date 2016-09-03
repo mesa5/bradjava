@@ -13,7 +13,6 @@ import javax.swing.JTextArea;
 public class Brad51 extends JFrame {
 	private JButton open, save, exit;
 	private JTextArea edit;
-	private int count;
 
 	public Brad51(){
 		super("My Window App");
