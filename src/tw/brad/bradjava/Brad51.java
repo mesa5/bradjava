@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class Brad51 extends JFrame implements ActionListener {
+public class Brad51 extends JFrame {
 	private JButton open, save, exit;
 	private JTextArea edit;
 	private int count;
@@ -33,41 +33,10 @@ public class Brad51 extends JFrame implements ActionListener {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		open.addActionListener(this);
-		save.addActionListener(this);
-		open.addActionListener(new MyListener());
-		open.addActionListener(new tw.brad.bradjava.MyListener());
-		open.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				doOpen();
-			}
-		});
 	}
-	private void doOpen(){
-		System.out.println("InnerListener");
-	}
-	
 	
 	public static void main(String[] args) {
 		new Brad51();
-	}
-
-	class MyListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("MyListner2:" + count++);
-		}
-	}
-
-
-	@Override
-	public void actionPerformed(ActionEvent event) {
-		if (event.getSource().equals(open)){
-			System.out.println("open");
-		}else if (save.equals(event.getSource())){
-			System.out.println("save");
-		}
 	}
 
 }
