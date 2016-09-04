@@ -12,7 +12,7 @@ public class Brad61 {
 
 	public static void main(String[] args) {
 		try {
-			URL url = new URL("http://www.iii.org.tw/assets/images/information-news/image005.jpg");
+			URL url = new URL("http://pdfmyurl.com/?url=http://tw.yahoo.com");
 			HttpURLConnection conn = 
 				(HttpURLConnection)url.openConnection();
 			conn.connect();
@@ -29,7 +29,7 @@ public class Brad61 {
 			
 			InputStream in = conn.getInputStream();
 			FileOutputStream fout = 
-				new FileOutputStream("upload/brad2.jpg");
+				new FileOutputStream("upload/brad3.pdf");
 			int b;
 			while ( (b = in.read()) != -1){
 				fout.write(b);
@@ -37,7 +37,7 @@ public class Brad61 {
 			fout.flush();
 			fout.close();
 			in.close();
-			
+			System.out.println("OK");
 		} catch (IOException e) {
 			System.out.println(e.toString());
 		}
