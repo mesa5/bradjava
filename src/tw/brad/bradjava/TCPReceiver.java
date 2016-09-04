@@ -1,6 +1,9 @@
 package tw.brad.bradjava;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,26 +16,30 @@ public class TCPReceiver {
 	public static void main(String[] args) {
 		try {
 			ServerSocket server = 
-				new ServerSocket(7777);
+				new ServerSocket(6666);
 			Socket socket = server.accept();
 			
-			InputStream in = socket.getInputStream();
-			InputStreamReader irs = new InputStreamReader(in);
-			BufferedReader reader = new BufferedReader(irs);
-			int c; StringBuffer sb = new StringBuffer();
-			while ( (c = reader.read()) != -1){
-				sb.append((char)c);
+			BufferedInputStream bin = 
+				new BufferedInputStream(socket.getInputStream());
+			
+			BufferedOutputStream bout = 
+				new BufferedOutputStream(
+					new FileOutputStream("upload/brad.jpg"));
+			
+			int b;
+			while ( (b = bin.read()) != -1){
+				bout.write(b);
 			}
-			InetAddress urip = socket.getInetAddress();
+			
+			bout.flush();
+			bout.close();
+			
+			bin.close();
 			
 			server.close();
-			
-			System.out.println(urip.getHostAddress() + ":" +
-					sb);
-			
+			System.out.println("Rec OK!");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Server:" + e.toString());
 		}
 	}
 
