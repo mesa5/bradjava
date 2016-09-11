@@ -39,6 +39,11 @@ public class MyPainter extends JPanel {
 		}
 	}
 
+	void clear(){
+		lines.clear();
+		repaint();
+	}
+	
 	private class MyAdapter extends MouseAdapter {
 		@Override
 		public void mouseDragged(MouseEvent e) {
