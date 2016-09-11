@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 public class Brad66 extends JFrame{
 	private MyPainter painter;
 	private JButton clear, undo, redo, save;
+	private MyClock clock;
 	
 	public Brad66(){
 		setLayout(new BorderLayout());
@@ -23,7 +24,9 @@ public class Brad66 extends JFrame{
 		undo = new JButton("Undo");
 		redo = new JButton("Redo");
 		save = new JButton("Save");
+		clock = new MyClock();
 		JPanel top = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		top.add(clock);
 		top.add(clear);top.add(undo);top.add(redo);
 		top.add(save);
 		add(top, BorderLayout.NORTH);
