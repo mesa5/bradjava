@@ -10,14 +10,16 @@ import javax.swing.JPanel;
 
 public class Brad66 extends JFrame{
 	private MyPainter painter;
-	private JButton clear;
+	private JButton clear, undo, redo;
 	
 	public Brad66(){
 		setLayout(new BorderLayout());
 	
 		clear = new JButton("Clear");
+		undo = new JButton("Undo");
+		redo = new JButton("Redo");
 		JPanel top = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		top.add(clear);
+		top.add(clear);top.add(undo);top.add(redo);
 		add(top, BorderLayout.NORTH);
 		
 		painter = new MyPainter();
@@ -37,10 +39,28 @@ public class Brad66 extends JFrame{
 				doClear();
 			}
 		});
+		undo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				doUndo();
+			}
+		});
+		redo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				doRedo();
+			}
+		});
 	}
 	
 	private void doClear(){
 		painter.clear();
+	}
+	private void doUndo(){
+		painter.undo();
+	}
+	private void doRedo(){
+		painter.redo();
 	}
 	
 	
