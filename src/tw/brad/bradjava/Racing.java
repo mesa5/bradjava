@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 public class Racing extends JFrame {
 	private JButton go;
 	private JLabel[] lanes;
+	private Car[] cars;
 	private int rank;
 	
 	public Racing() {
@@ -35,7 +36,10 @@ public class Racing extends JFrame {
 	}
 	private void go(){
 		rank = 1;
-		Car[] cars = new Car[8];
+		cars = new Car[8];
+		for (int i=0; i<lanes.length; i++){
+			lanes[i].setText((i+1) + ". ");
+		}
 		for (int i=0; i<cars.length; i++){
 			cars[i] = new Car(i);
 		}
@@ -54,13 +58,21 @@ public class Racing extends JFrame {
 				if (i==99){
 					lanes[whichLane].setText(
 							lanes[whichLane].getText() + 
-							rank++);
+							" >WINNER");
+					stopGame();
+					break;
 				}
 				try {
 					Thread.sleep((int)(Math.random()*200));
 				} catch (InterruptedException e) {
+					break;
 				}
 			}
+		}
+	}
+	private void stopGame(){
+		for (int i=0; i<cars.length; i++){
+			cars[i].interrupt();
 		}
 	}
 	public static void main(String[] args) {
