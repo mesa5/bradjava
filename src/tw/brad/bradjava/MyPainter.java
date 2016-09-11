@@ -3,16 +3,18 @@ package tw.brad.bradjava;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
 
-public class MyPainter extends JPanel 
-	implements MouseListener {
+public class MyPainter extends JPanel {
 	public MyPainter(){
-		System.out.println("A");
-		addMouseListener(this);
+		MyAdapter adapter = new MyAdapter();
+		addMouseListener(adapter);
+		addMouseMotionListener(adapter);
 	}
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -21,20 +23,15 @@ public class MyPainter extends JPanel
 		
 		g2d.setColor(Color.BLUE);
 	}
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		System.out.println("Clicked");
+	private class MyAdapter extends MouseAdapter {
+		@Override
+		public void mouseDragged(MouseEvent e) {
+			super.mouseDragged(e);
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+			super.mousePressed(e);
+		}
 	}
-	@Override
-	public void mouseEntered(MouseEvent e) {}
-	@Override
-	public void mouseExited(MouseEvent e) {}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		System.out.println("Pressed");
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		System.out.println("Released");
-	}
+	
 }
