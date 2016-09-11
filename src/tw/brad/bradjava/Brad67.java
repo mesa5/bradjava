@@ -13,6 +13,9 @@ public class Brad67 {
 		map.put(1, "3");
 		map.put(7, "male");
 		System.out.println(map.get(7));
+		
+		//BuffIm
+		
 	}
 
 }
